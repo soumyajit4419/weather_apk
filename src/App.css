@@ -6,3 +6,12 @@
 .city{
   width:50%
 }
+
+.MuiTypography-colorTextSecondary{
+  color: rgb(24, 23, 23) !important;
+}
+
+.MuiTypography-body1{
+  text-align: center !important;
+
+}
