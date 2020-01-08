@@ -4,6 +4,10 @@ import Button from '@material-ui/core/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import Cards from './Card'
 import { Grid } from '@material-ui/core';
+import NavBar from './Nav'
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import Link from '@material-ui/core/Link';
 
 
 const axios = require('axios');
@@ -34,7 +38,9 @@ class App extends Component {
       })
       .catch((err) => {
         console.log(err.message);
-
+        this.setState({
+          data: -1
+        })
       });
     ;
   }
@@ -54,14 +60,30 @@ class App extends Component {
           description={this.state.data[i].weather[0].description} />)
       }
       return (
-        <Grid container spacing={4}>{blocks}</Grid>
-      )
+        <div>
+          <NavBar />
+          <Grid container spacing={2}> {blocks}</Grid>
+        </div>
+      );
+    }
+    else if (this.state.data === -1) {
+      return (
+
+        <Grid item md={12} xs={12} sm={12}>
+          <Card className="errCard" >
+            <CardHeader  title="Wrong City Name" ></CardHeader>
+            <Link  href="/" underline="none">Home</Link>
+          </Card>
+        </Grid>
+
+      );
     }
 
     return (
 
       <div className="App" >
-        <ValidatorForm autoComplete="off" onSubmit={this.handelSubmit}>
+        <NavBar />
+        <ValidatorForm autoComplete="off" onSubmit={this.handelSubmit} >
           <TextValidator required type="text" className="city" id="cityName" label="Enter City Name" variant="outlined" size="small" color="primary" value={this.state.city} onChange={this.getCityName} />
           <br /><br />
           <Button variant="outlined" color="primary" type="submit">Search</Button>
