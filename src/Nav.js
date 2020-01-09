@@ -17,7 +17,7 @@ const NavBar = () => {
 
                 <span className="navRight">
                     <Typography variant="h5" color="inherit">
-                        REACT WEATHER APPLICATION
+                        React Weather Application
                     </Typography>
                 </span>
             </Toolbar>
