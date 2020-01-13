@@ -7,7 +7,7 @@ import { Grid } from '@material-ui/core';
 import NavBar from './Nav'
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
-import Link from '@material-ui/core/Link';
+// import Link from '@material-ui/core/Link';
 
 
 const axios = require('axios');
@@ -42,7 +42,6 @@ class App extends Component {
           data: -1
         })
       });
-    ;
   }
 
   render() {
@@ -67,14 +66,17 @@ class App extends Component {
       );
     }
     else if (this.state.data === -1) {
-      return (
+      const errorCrd =
+        <Card className="errCard" style={{ paddingTop: "90px" }}>
+          <CardHeader title="Wrong City Name. City not found ..." ></CardHeader>
+        </Card>
 
-        <Grid item md={12} xs={12} sm={12}>
-          <Card className="errCard" >
-            <CardHeader  title="Wrong City Name" ></CardHeader>
-            <Link  href="/" underline="none">Home</Link>
-          </Card>
-        </Grid>
+
+      return (
+        <div>
+          <NavBar />
+          <Grid> {errorCrd}</Grid>
+        </div>
 
       );
     }
